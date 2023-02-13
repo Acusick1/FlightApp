@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "flightapi"
+name = "flightapp"
 version = "0.1.0"
 description = ""
 authors = ["Andrew Cusick <andrewcusick13@outlook.com>"]
