@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     db_host: str
     db_port: int
     db_name: str
+    return_limit: int = 100
 
     class Config:
         env_file = Path(__file__).resolve().parent / ".env"

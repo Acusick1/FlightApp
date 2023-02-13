@@ -1,11 +1,11 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from db import schemas
-from db.database import engine
-from api.routes import price, route, search
+from sqlmodel import SQLModel
+from src.db.database import engine
+from src.api.routes import request #, flight
 
-schemas.Base.metadata.create_all(bind=engine)
+SQLModel.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = ["*"]
@@ -18,9 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(search.router)
-app.include_router(route.router)
-app.include_router(price.router)
+# app.include_router(flight.router)
+app.include_router(request.router)
 
 
 if __name__ == "__main__":
