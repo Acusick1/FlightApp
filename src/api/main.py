@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel
 from src.db.database import engine
-from src.api.routes import request #, flight
+from src.api.routes import request, flight
 
 SQLModel.metadata.create_all(bind=engine)
 app = FastAPI()
@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.include_router(flight.router)
+app.include_router(flight.router)
 app.include_router(request.router)
 
 
