@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+
+  postgres:
+    image: postgres:11@sha256:85d79cba2d4942dad7c99f84ec389a5b9cc84fb07a3dcd3aff0fb06948cdc03b
+    ports:
+      - "8001:5432"
+    env_file:
+      - ./docker.env
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./docker.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-db:
