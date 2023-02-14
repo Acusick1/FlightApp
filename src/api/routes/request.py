@@ -8,7 +8,7 @@ from config import settings
 router = APIRouter(prefix="/request", tags=["Request"])
 
 
-@router.get("/", status_code=status.HTTP_200_OK, response_model=list[schemas.FlightRead])
+@router.get("/flight", status_code=status.HTTP_200_OK, response_model=list[schemas.FlightRead])
 def get_flight(
     dep_iata: Optional[str] = None, 
     arr_iata: Optional[str] = None, 

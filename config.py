@@ -6,7 +6,6 @@ from typing import Any
 
 
 class Settings(BaseSettings):
-    date_fmt: str = "%Y-%m-%d"
     db_username: str
     db_password: str
     db_host: str
