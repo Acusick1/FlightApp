@@ -11,6 +11,7 @@ engine = create_engine(DATABASE_URI)
 if not database_exists(engine.url):
     create_database(engine.url)
 
+print(f'Connected to database: {settings.db_name} at host: {settings.db_host}')
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
