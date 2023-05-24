@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-WORKDIR /usr
+WORKDIR /app
 
 RUN apt-get update
 
@@ -8,7 +8,7 @@ COPY requirements ./requirements
 
 RUN pip install --no-cache-dir -r requirements/prod.txt
 
-ENV PYTHONPATH .
+ENV PYTHONPATH ./
 
 COPY config.py ./
 COPY Procfile ./

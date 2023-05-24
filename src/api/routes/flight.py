@@ -1,9 +1,7 @@
-import logging
 from fastapi import APIRouter, HTTPException, Depends, status
 from sqlalchemy.orm import Session
 from src.db import schemas
 from src.db.database import get_db
-from config import settings
 
 router = APIRouter(prefix="/flight", tags=["Flight"])
 
